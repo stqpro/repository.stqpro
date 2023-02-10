@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Passport">
+        <setting id="ip" type="text" label="Speaker IP" default="" />
+        <setting id="device_id" type="text" label="Device ID" default="" />    
+        <setting id="local_key" type="text" label="Local key" default="" />
+    </category>
+</settings>

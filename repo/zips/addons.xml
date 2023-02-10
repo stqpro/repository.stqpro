@@ -35,4 +35,14 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="service.turnonspeaker" name="Speaker Service" version="1.0.0" provider-name="stq">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+	</requires>
+	<extension point="xbmc.service" library="python/script.py">
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<license>MIT</license>
+	</extension>
 </addon></addons>
