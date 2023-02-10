@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<addons><addon id="plugin.audio.music.yandex" name="Яндекс Музыка" version="0.1.4.1" provider-name="DesSolo, dandy, Eviloid, stqpro">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.requests" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" provides="audio" library="default.py">&gt;
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Яндекс Музыка</summary>
+    <description>Яндекс.Музыка — стриминговый сервис компании «Яндекс», позволяющий прослушивать музыкальные композиции, альбомы, подборки музыкальных треков и получать персональные рекомендации. Также существуют приложения для iOS, Android, Windows и Windows Phone.</description>
+    <description>For personal use only</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+</addon><addon id="repository.stqpro" name="stqpro's Add-on Repository" version="1.0" provider-name="stqpro">
+    <extension point="xbmc.addon.repository" name="Example Repository">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/stqpro/repository.stqpro/master/repo/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/stqpro/repository.stqpro/master/repo/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/stqpro/repository.stqpro/master/repo/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>stqpro's Add-on Repository</summary>
+        <description>Some small utils and reworks</description>
+        <disclaimer />
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon></addons>
