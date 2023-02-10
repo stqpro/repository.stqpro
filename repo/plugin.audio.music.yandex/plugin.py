@@ -30,12 +30,12 @@ def get_track_list(album_id, tracks, info=None):
         artists = get_artists(track)
 
         if artists:
-            name = "[COLOR=FF00FFF0]%s[/COLOR] - %s" % (artists, track['title'])
+            name = "%s - %s" % (artists, track['title'])
         else:
             name = track['title']
 
         if not track['available']:
-            name = '[COLOR=red][B]$[/B][/COLOR] ' + name
+            name = '[B]$[/B] ' + name
 
         li = xbmcgui.ListItem(name)
 
@@ -80,7 +80,7 @@ def get_album_list(albums):
         artists = get_artists(album)
 
         if artists:
-            name = "[COLOR=FF00FFF0]%s[/COLOR] - %s" % (artists, album['title'])
+            name = "%s - %s" % (artists, album['title'])
         else:
             name = album['title']
 
@@ -106,7 +106,7 @@ def get_playlist_list(playlists):
             continue
 
         li = xbmcgui.ListItem(
-            "[COLOR=FF00FFF0]%s[/COLOR] - %s" % (playlist['owner']['name'], playlist['title']))
+            "%s - %s" % (playlist['owner']['name'], playlist['title']))
 
         if playlist['kind'] == 3:
             playlist['uid'] = playlist['owner']['uid']
@@ -135,7 +135,7 @@ def get_podcast_list(podcasts):
 
         labels = get_labels(podcast)
         if labels:
-            title = "[COLOR=FF00FFF0]%s[/COLOR] - %s" % (labels, podcast['title'])
+            title = "%s - %s" % (labels, podcast['title'])
         else:
             title = podcast['title']
 
@@ -160,9 +160,9 @@ def get_artist_list(artists):
         if artist.get('error'):
             continue
 
-        name = artist.get('name', '[COLOR=red]No name[/COLOR]')
+        name = artist.get('name', 'No name')
 
-        li = xbmcgui.ListItem("[COLOR=FF00FFF0]%s[/COLOR]" % name)
+        li = xbmcgui.ListItem("%s" % name)
         li.setArt({'thumb': get_image(artist['ogImage'])})
 
         rating = artist.get('ratings').get('month')
@@ -248,14 +248,14 @@ class MusicYandex:
 
     def menu(self):
         routers = [
-            {'name': '[COLOR=FF00FF00][Поиск][/COLOR]', 'uri': '?mode=search'},
-            {'name': '[COLOR=FF00FFFF]Новые плейлисты[/COLOR]', 'uri': '?mode=index&what=new-playlists'},
-            {'name': '[COLOR=FF00FFFF]Новые релизы[/COLOR]', 'uri': '?mode=index&what=new-releases'},
-            {'name': '[COLOR=FF00FFFF]Чарт[/COLOR]', 'uri': '?mode=index&what=chart&chartType=tracks'}
+            {'name': '[Поиск]', 'uri': '?mode=search'},
+            {'name': 'Новые плейлисты', 'uri': '?mode=index&what=new-playlists'},
+            {'name': 'Новые релизы', 'uri': '?mode=index&what=new-releases'},
+            {'name': 'Чарт', 'uri': '?mode=index&what=chart&chartType=tracks'}
         ]
         if self.settings['account'] and self.settings['account']['authorized']:
             routers.extend([
-                {'name': '[COLOR=FF00FF00]Моя музыка[/COLOR]', 'uri': '?mode=my'},
+                {'name': 'Моя музыка', 'uri': '?mode=my'},
             ])
         else:
             routers.extend([
@@ -315,11 +315,11 @@ class MusicYandex:
     def my_music(self, filter_name=None, **kwargs):
         if not filter_name:
             routers = [
-                {'name': '[COLOR=FF00FFFF]Треки[/COLOR]', 'uri': '?mode=my&filter_name=tracks'},
-                {'name': '[COLOR=FF00FFFF]Альбомы[/COLOR]', 'uri': '?mode=my&filter_name=albums'},
-                {'name': '[COLOR=FF00FFFF]Плейлисты[/COLOR]', 'uri': '?mode=my&filter_name=playlists'},
-                {'name': '[COLOR=FF00FFFF]Подкасты[/COLOR]', 'uri': '?mode=my&filter_name=podcasts'},
-                {'name': '[COLOR=FF00FFFF]Исполнители[/COLOR]', 'uri': '?mode=my&filter_name=artists'},
+                {'name': 'Треки', 'uri': '?mode=my&filter_name=tracks'},
+                {'name': 'Альбомы', 'uri': '?mode=my&filter_name=albums'},
+                {'name': 'Плейлисты', 'uri': '?mode=my&filter_name=playlists'},
+                {'name': 'Подкасты', 'uri': '?mode=my&filter_name=podcasts'},
+                {'name': 'Исполнители', 'uri': '?mode=my&filter_name=artists'},
             ]
             return self.draw_menu(routers)
 
